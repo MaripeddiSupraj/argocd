@@ -37,11 +37,9 @@ This section covers the initial installation and deployment of a sample applicat
    ```bash
    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
    ```
-   (Password: wCQELSZfBesGoCAx)
-
-2. Login to the Argo CD CLI:
+   2. Login to the Argo CD CLI:
    ```bash
-   argocd login 35.184.236.245 --insecure --username admin --password wCQELSZfBesGoCAx --grpc-web
+   argocd login 35.184.236.245 --insecure --username admin --password $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --grpc-web
    ```
 
 ### 1.4. Deploy Application
