@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: calm-vine-465617-j3
+      GCP_GAR_LOCATION: us-central1
+      GCP_GAR_REPOSITORY: argocd-repo
 
     steps:
       - name: Checkout code
@@ -29,4 +33,4 @@ jobs:
         with:
           context: app
           push: true
-          tags: ${{ secrets.GCP_GAR_LOCATION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_GAR_REPOSITORY }}/argocd-demo:latest
+          tags: ${{ env.GCP_GAR_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_GAR_REPOSITORY }}/argocd-demo:latest
