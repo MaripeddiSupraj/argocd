@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"rsc.io/quote"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, World!")
+		fmt.Fprintf(w, quote.Hello())
 	})
 
 	fmt.Println("Server listening on port 8080")
